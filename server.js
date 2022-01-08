@@ -4,6 +4,8 @@
 // init project
 var express = require('express');
 var app = express();
+const router = require('./router/router')
+require('dotenv').config()
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
@@ -12,6 +14,10 @@ app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 20
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
+
+
+//new router
+app.use("/api/timestamps", router )
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
